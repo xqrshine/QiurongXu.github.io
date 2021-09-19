@@ -36,7 +36,7 @@ hexo init
 
 4. 基本配置。修改hexo/_config.yml中网站参数。
 
-![](/Users/R/Desktop/微信截图_20210919201210.png)
+![](../微信截图_20210919201210.png)
 
 
 5. 启动命令,登录localhost:4000，就可以看到生成的博客了。
@@ -44,7 +44,7 @@ hexo init
 hexo g  && hexo s
 ```
 
-![Hexo博客](C:/Users/R/Desktop/QQ图片20210919200358.png)
+![Hexo博客](../images/hexo-Next-github搭建博客/QQ图片20210919200358.png)
 
 # hexo部署到Github
 
@@ -75,7 +75,7 @@ hexo deploy
 - hexo generate 顾名思义，生成静态文章，可以用 hexo g缩写
 - hexo deploy 部署文章，可以用hexo d缩写
 
-![部署成功](C:/Users/R/Desktop/QQ图片20210919205138.png)
+![部署成功](../images/hexo-Next-github搭建博客/QQ图片20210919205138.png)
 
 部署过成功中如果是链接不到远程仓库，可能是因为没有SSH，生成SSH：
 
@@ -364,7 +364,7 @@ search:
 
 由于hexo d上传部署到github的其实是hexo编译后的文件，是用来生成网页的，不包含源文件。也就是上传的是在本地目录里自动生成的.deploy_git里面。其他文件 ，包括我们写在source 里面的，和配置文件，主题文件，都没有上传到github
 
-![](C:/Users/R/Desktop/微信截图_20210919203650.png)
+![](../images/hexo-Next-github搭建博客/微信截图_20210919203650.png)
 
 ### 上传分支
 
@@ -398,7 +398,7 @@ git push
 
 这样就上传完了，可以去你的github上看一看hexo分支有没有上传上去，其中node_modules、public、db.json已经被忽略掉了，没有关系，不需要上传的，因为在别的电脑上需要重新输入命令安装 。
 
-![](C:/Users/R/Desktop/微信截图_20210919204219.png)
+![](../images/hexo-Next-github搭建博客/微信截图_20210919204219.png)
 
 ### 更换电脑操作
 
@@ -426,7 +426,7 @@ layou布局，是指文件的不同保存路径:
 - page: source
 - draft: source/_drafts
 
-![](C:/Users/R/Desktop/微信截图_20210919210812.png)
+![](../images/hexo-Next-github搭建博客/微信截图_20210919210812.png)
 
 ```
 hexo new "title 1"  # 生成source/_posts/title-1.md 文件, 文件名和标题同名。
