@@ -349,12 +349,12 @@
 <ol start="4">
 <li>基本配置。修改hexo/_config.yml中网站参数。</li>
 </ol>
-<img src="微信截图_20210919201210.png" width = "80%" />
+<img src="/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919201210.png" class="">
 
 <ol start="5">
 <li>启动命令,登录localhost:4000，就可以看到生成的博客了。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g  &amp;&amp; hexo s</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><img src="QQ%E5%9B%BE%E7%89%8720210919200358.png" alt="Hexo博客"></p>
+<p>![](images/hexo-Next-github搭建博客/QQ图片20210919200358.png =300x200)</p>
 <h1 id="hexo部署到Github"><a href="#hexo部署到Github" class="headerlink" title="hexo部署到Github"></a>hexo部署到Github</h1><p>这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 _config.yml，翻到最后，修改为<br>YourgithubName就是你的GitHub账户：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
@@ -369,7 +369,8 @@
 <li>hexo generate 顾名思义，生成静态文章，可以用 hexo g缩写</li>
 <li>hexo deploy 部署文章，可以用hexo d缩写</li>
 </ul>
-<p><img src="QQ%E5%9B%BE%E7%89%8720210919205138.png" alt="部署成功"></p>
+<img src="/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210919205138.png" class="">
+
 <p>部署过成功中如果是链接不到远程仓库，可能是因为没有SSH，生成SSH：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;   #一路回车</span><br></pre></td></tr></table></figure>
 
@@ -476,7 +477,8 @@
 
 <h1 id="git分支进行多终端工作"><a href="#git分支进行多终端工作" class="headerlink" title="git分支进行多终端工作"></a>git分支进行多终端工作</h1><p>适用于更换电脑更新博客时使用，自己也最好一直维护好线上的源代码。</p>
 <h3 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h3><p>由于hexo d上传部署到github的其实是hexo编译后的文件，是用来生成网页的，不包含源文件。也就是上传的是在本地目录里自动生成的.deploy_git里面。其他文件 ，包括我们写在source 里面的，和配置文件，主题文件，都没有上传到github</p>
-<p><img src="/images/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919203650.png"></p>
+<img src="/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919203650.png" class="">
+
 <h3 id="上传分支"><a href="#上传分支" class="headerlink" title="上传分支"></a>上传分支</h3><p>在github上新建hexo分支，将这个分支设为默认分支，git clone到本地。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:xqrshine/xqrshine.github.io.git</span><br></pre></td></tr></table></figure>
 
@@ -488,7 +490,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit –m &quot;add branch&quot;</span><br><span class="line">git push </span><br></pre></td></tr></table></figure>
 
 <p>这样就上传完了，可以去你的github上看一看hexo分支有没有上传上去，其中node_modules、public、db.json已经被忽略掉了，没有关系，不需要上传的，因为在别的电脑上需要重新输入命令安装 。</p>
-<p><img src="/images/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919204219.png"></p>
+<img src="/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919204219.png" class="">
+
+
 <h3 id="更换电脑操作"><a href="#更换电脑操作" class="headerlink" title="更换电脑操作"></a>更换电脑操作</h3><p>安装git，Nodejs，hexo, 从分支git clone源代码到本地。然后：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd xxx.github.io</span><br><span class="line"># hexo init  # 此时不用初始化，因为源代码已经初始化了</span><br><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
@@ -501,7 +505,10 @@
 <li>page: source</li>
 <li>draft: source/_drafts</li>
 </ul>
-<p><img src="/images/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919210812.png"></p>
+<img src="/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919210812.png" class="">
+
+
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;title 1&quot;  # 生成source/_posts/title-1.md 文件, 文件名和标题同名。</span><br><span class="line">hexo new page --path about/me &quot;About me&quot;  # 指定路径，生成source/about/me.md文件，文章的标题为“About me ”。</span><br><span class="line">hexo new page --path about/me  # 指定路径 不指定title， 生成source/about/me.md文件，文章的标题为&quot;page&quot;. 这个命令不可取</span><br></pre></td></tr></table></figure>
 
 <h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><p><code>hexo generate</code>, <code>hexo g</code> 生成静态文件。</p>
