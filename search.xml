@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/09/19/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>hexo+Next+github搭建博客</title>
+    <url>/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>个人博客是用Hexo微博框架+Next主题搭建的，然后把搭建的博客放在Github Pages上。现在把搭建的过程，遇到的问题，简单操作记录下来。</p>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><ol>
+<li>Node.js</li>
+<li>Git</li>
+</ol>
+<p>Hexo博客框架基于Node.js，下载<a href="http://nodejs.cn/download/">Node.js</a>, 更改安装目录，一路next至安装成功。</p>
+<p>Git用于部署代码到github上，下载<a href="https://gitforwindows.org/">Git</a></p>
+<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><blockquote>
+<p>说明：在git bash中操作命令行。</p>
+</blockquote>
+<ol>
+<li>本地创建blog文件夹，打开git bash，进入该文件夹。</li>
+<li>安装命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>创建hexo文件夹, 并初始化</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd hexo</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>基本配置。修改hexo/_config.yml中网站参数。</li>
+</ol>
+<img src="微信截图_20210919201210.png" width = "80%" />
+
+<ol start="5">
+<li>启动命令,登录localhost:4000，就可以看到生成的博客了。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g  &amp;&amp; hexo s</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="/images/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210919200358.png" alt="Hexo博客"></p>
+<h1 id="hexo部署到Github"><a href="#hexo部署到Github" class="headerlink" title="hexo部署到Github"></a>hexo部署到Github</h1><p>这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 _config.yml，翻到最后，修改为<br>YourgithubName就是你的GitHub账户：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>部署：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hexo clean清除了你之前生成的东西，也可以不加。</li>
+<li>hexo generate 顾名思义，生成静态文章，可以用 hexo g缩写</li>
+<li>hexo deploy 部署文章，可以用hexo d缩写</li>
+</ul>
+<p><img src="/images/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210919205138.png" alt="部署成功"></p>
+<p>部署过成功中如果是链接不到远程仓库，可能是因为没有SSH，生成SSH：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;   #一路回车</span><br></pre></td></tr></table></figure>
+
+<p>把id_rsa.pub里面的信息复制到github中去。</p>
+<h1 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h1><ol>
+<li><p><a href="https://github.com/theme-next/hexo-theme-next">Next下载</a>, 用git clone命令，或者直接下载压缩包，并解压到themes/next文件夹。</p>
+</li>
+<li><p>测试主题,并登录<a href="http://localhost:4000查看。">http://localhost:4000查看。</a></p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>配置Next主题</p>
+</li>
+<li><p>网站图标设置</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">favicon:</span><br><span class="line">small: /images/favicon-16x16-next.png  # 即为网站图标</span><br><span class="line">medium: /images/favicon-32x32-next.png</span><br><span class="line">apple_touch_icon: /images/apple-touch-icon-next.png</span><br><span class="line">safari_pinned_tab: /images/logo.svg</span><br><span class="line">#android_manifest: /images/manifest.json</span><br><span class="line">#ms_browserconfig: /images/browserconfig.xml	</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>网站页脚小心心定义</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line"># Specify the date when the site was setup.</span><br><span class="line"># If not defined, current year will be used.</span><br><span class="line">#since: 2015</span><br><span class="line"></span><br><span class="line"># Icon between year and copyright info.</span><br><span class="line">icon:</span><br><span class="line"># Icon name in fontawesome, see: https://fontawesome.com/v4.7.0/icons</span><br><span class="line"># `heart` is recommended with animation in red (#ff0000).</span><br><span class="line">name: heart</span><br><span class="line"># If you want to animate the icon, set it to true.</span><br><span class="line">animated: true</span><br><span class="line"># Change the color of icon, using Hex Code.</span><br><span class="line">color: &quot;#ff0000&quot;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>关闭底部由hexo强力驱动</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">powered:</span><br><span class="line">  # Hexo link (Powered by Hexo).</span><br><span class="line">  enable: false</span><br><span class="line">  # Version info of Hexo after Hexo link (vX.X.X).</span><br><span class="line">  version: false</span><br><span class="line"></span><br><span class="line">theme:</span><br><span class="line">  # Theme &amp; scheme info link (Theme - NexT.scheme).</span><br><span class="line">  enable: false</span><br><span class="line">  # Version info of NexT after scheme info (vX.X.X).</span><br><span class="line">  version: false</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>菜单栏设置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  about: /about/ || user</span><br><span class="line">  tags: /tags/ || tags</span><br><span class="line">  categories: /categories/ || th</span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line"></span><br><span class="line"># Enable/Disable menu icons.</span><br><span class="line">menu_icons:</span><br><span class="line">  enable: true  #表示是否显示菜单图标icons</span><br><span class="line">  badges: false  # 显示每个菜单下面有多少个内容</span><br></pre></td></tr></table></figure>
+
+<p>about、tags、categories取消注释，创建者三个菜单页面.</p>
+<ul>
+<li>新建：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page categories</span><br><span class="line">cd source/categories/index.md</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编辑保存md文件：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章分类</span><br><span class="line">date: 2017-05-27 13:47:40</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>部署(看不到标签、分类时就是因为没有部署或者md文件的type不对)：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>about和tags同理。</p>
+<ol start="5">
+<li>Next主题四种风格设置 （<a href="https://blog.csdn.net/qq_42185634/article/details/102992499">四种布局</a>）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>社交链接设置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#social:</span><br><span class="line">  #GitHub: https://github.com/yourname || github</span><br><span class="line">  #E-Mail: mailto:yourname@gmail.com || envelope</span><br><span class="line">  #Google: https://plus.google.com/yourname || google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || facebook</span><br><span class="line">  #VK Group: https://vk.com/yourname || vk</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || skype</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>友情链接设置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Blog rolls</span><br><span class="line">links_icon: link</span><br><span class="line">links_title: Links</span><br><span class="line">links_layout: block</span><br><span class="line">#links_layout: inline</span><br><span class="line">#links:</span><br><span class="line">  #Title: http://example.com/</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>侧边栏设置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  # Sidebar Position, available value: left | right (only for Pisces | Gemini).</span><br><span class="line">  # 此处设置只适用于Pisces或者Gemini风格</span><br><span class="line">  position: left</span><br><span class="line">  #position: right</span><br><span class="line"></span><br><span class="line">  # 侧边栏如何展示</span><br><span class="line">  display: post    # 侧边栏在打开文章的时候显示</span><br><span class="line">  #display: always  # 侧边栏不管在哪都显示</span><br><span class="line">  #display: hide    # 隐藏侧边栏</span><br><span class="line">  #display: remove  # 移除侧边栏</span><br><span class="line"></span><br><span class="line">  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).</span><br><span class="line">  offset: 12</span><br><span class="line"></span><br><span class="line">  # 设置返回页面顶部设置，只适用于Pisces或者Gemini风格，建议开启</span><br><span class="line">  b2t: true</span><br><span class="line"></span><br><span class="line">  # 显示浏览百分比，建议开启</span><br><span class="line">  scrollpercent: true</span><br><span class="line"></span><br><span class="line">  # Enable sidebar on narrow view (only for Muse | Mist).</span><br><span class="line">  onmobile: false</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>文章元数据设置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_meta:</span><br><span class="line">  item_text: true</span><br><span class="line">  created_at: true  # 创建于</span><br><span class="line">  updated_at:</span><br><span class="line">    enabled: false</span><br><span class="line">    # If true, show updated date label only if `updated date` different from &#x27;created date&#x27; (post edited in another day than was created).</span><br><span class="line">    # And if post will edited in same day as created, edited time will show in popup title under created time label.</span><br><span class="line">    # If false show anyway, but if post edited in same day, show only edited time.</span><br><span class="line">    another_day: true</span><br><span class="line">  categories: true  #分类</span><br></pre></td></tr></table></figure>
+
+<ol start="10">
+<li>文章字数统计设置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Post wordcount display settings</span><br><span class="line"># Dependencies: https://github.com/theme-next/hexo-symbols-count-time</span><br><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_post: true</span><br><span class="line">  item_text_total: false</span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li>侧边栏头像设置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">avatar:</span><br><span class="line">  # in theme directory(source/images): /images/avatar.gif</span><br><span class="line">  # in site  directory(source/uploads): /uploads/avatar.gif</span><br><span class="line">  # You can also use other linking images.</span><br><span class="line">  url:  # 此处是头像的地址</span><br><span class="line">  # If true, the avatar would be dispalyed in circle. </span><br><span class="line">  rounded: true   # 设置头像是否为圆形</span><br><span class="line">  # The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.</span><br><span class="line">  opacity: 1    # 设置不透明度，1为完全不透明，0为完全透明</span><br><span class="line">  # If true, the avatar would be rotated with the cursor.</span><br><span class="line">  rotated: true   # 设置鼠标放到头像上是否旋转</span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li>代码块设置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Manual define the border radius in codeblock</span><br><span class="line">  # Leave it empty for the default 1</span><br><span class="line">  border_radius: 8   # 按钮圆滑度</span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:  # 设置是否开启代码块复制按钮</span><br><span class="line">    enable: true</span><br><span class="line">    # Show text copy result</span><br><span class="line">    show_result: true  # 是否显示复制成功信息</span><br></pre></td></tr></table></figure>
+
+<ol start="13">
+<li>代码块风格设置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available values: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https://github.com/chriskempson/tomorrow-theme</span><br><span class="line">highlight_theme: night eighties</span><br></pre></td></tr></table></figure>
+
+<ol start="14">
+<li>开启本地博客搜索功能</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line"># Dependencies: https://github.com/theme-next/hexo-generator-searchdb</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # unescape html strings to the readable one</span><br><span class="line">  unescape: false</span><br></pre></td></tr></table></figure>
+
+<p>注意该搜索功能需要依赖hexo-generator-searchdb插件，依然还是使用命令npm install hexo-generator-searchdb –save来进行安装。然后 在hexo站点根目录的末尾，加入以下代码即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
+
+<h1 id="git分支进行多终端工作"><a href="#git分支进行多终端工作" class="headerlink" title="git分支进行多终端工作"></a>git分支进行多终端工作</h1><p>适用于更换电脑更新博客时使用，自己也最好一直维护好线上的源代码。</p>
+<h3 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h3><p>由于hexo d上传部署到github的其实是hexo编译后的文件，是用来生成网页的，不包含源文件。也就是上传的是在本地目录里自动生成的.deploy_git里面。其他文件 ，包括我们写在source 里面的，和配置文件，主题文件，都没有上传到github</p>
+<p><img src="/images/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919203650.png"></p>
+<h3 id="上传分支"><a href="#上传分支" class="headerlink" title="上传分支"></a>上传分支</h3><p>在github上新建hexo分支，将这个分支设为默认分支，git clone到本地。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:xqrshine/xqrshine.github.io.git</span><br></pre></td></tr></table></figure>
+
+<p>然后删除.git以外的所有文件。把之前我们写的博客源文件全部复制过来，除了.deploy_git。这里应该说一句，复制过来的源文件应该有一个.gitignore，用来忽略一些不需要的文件，如果没有的话，自己新建一个，在里面写上如下，表示这些类型文件不需要git：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br></pre></td></tr></table></figure>
+
+<p>注意，如果你之前克隆过theme中的主题文件，那么应该把主题文件中的.git文件夹删掉，因为git不能嵌套上传，最好是显示隐藏文件，检查一下有没有，否则上传的时候会出错，导致你的主题文件无法上传，这样你的配置在别的电脑上就用不了。</p>
+<p>然后：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit –m &quot;add branch&quot;</span><br><span class="line">git push </span><br></pre></td></tr></table></figure>
+
+<p>这样就上传完了，可以去你的github上看一看hexo分支有没有上传上去，其中node_modules、public、db.json已经被忽略掉了，没有关系，不需要上传的，因为在别的电脑上需要重新输入命令安装 。</p>
+<p><img src="/images/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919204219.png"></p>
+<h3 id="更换电脑操作"><a href="#更换电脑操作" class="headerlink" title="更换电脑操作"></a>更换电脑操作</h3><p>安装git，Nodejs，hexo, 从分支git clone源代码到本地。然后：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd xxx.github.io</span><br><span class="line"># hexo init  # 此时不用初始化，因为源代码已经初始化了</span><br><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>接下来就可以写文章了。</p>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p>常用命令</p>
+<h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><p><code>hexo new [layout] &lt;title&gt;</code> 新建文章, 生成md文件，标题含空格时用引号括起来</p>
+<p>layou布局，是指文件的不同保存路径:</p>
+<ul>
+<li>post：source/_posts/</li>
+<li>page: source</li>
+<li>draft: source/_drafts</li>
+</ul>
+<p><img src="/images/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919210812.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title 1&quot;  # 生成source/_posts/title-1.md 文件, 文件名和标题同名。</span><br><span class="line">hexo new page --path about/me &quot;About me&quot;  # 指定路径，生成source/about/me.md文件，文章的标题为“About me ”。</span><br><span class="line">hexo new page --path about/me  # 指定路径 不指定title， 生成source/about/me.md文件，文章的标题为&quot;page&quot;. 这个命令不可取</span><br></pre></td></tr></table></figure>
+
+<h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><p><code>hexo generate</code>, <code>hexo g</code> 生成静态文件。</p>
+<p><code>hexo g -d</code> 文件生成后立即部署网站。</p>
+<h3 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h3><p><code>hexo publish [layout] &lt;filename&gt;</code> 发表草稿</p>
+<h3 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h3><p><code>hexo deploy</code>, <code>hexo d</code> 部署。只要做出修改，就必须生成-部署。</p>
+<h3 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h3><p><code>hexo clean</code> 清除缓存文件（db.json）和已经生成的静态文件（publish），在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
+<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p> <a href="https://github.com/boboidream/hexo-easy-images">npm i hexo-easy-images -s</a>：</p>
+]]></content>
+  </entry>
+</search>
