@@ -24,7 +24,6 @@ Git用于部署代码到github上，下载[Git](https://gitforwindows.org/)
 
 ```
 npm install -g hexo-cli
-
 ```
 
 3. 创建hexo文件夹, 并初始化
@@ -36,7 +35,7 @@ hexo init
 
 4. 基本配置。修改hexo/_config.yml中网站参数。
 
-![](/images/hexo-Next-github搭建博客/微信截图_20210919201210.png)
+![](../images/hexo-Next-github搭建博客/微信截图_20210919201210.png)
 
 
 5. 启动命令,登录localhost:4000，就可以看到生成的博客了。
@@ -400,6 +399,7 @@ git push
 
 ![](../images/hexo-Next-github搭建博客/微信截图_20210919204219.png)
 
+
 ### 更换电脑操作
 
 安装git，Nodejs，hexo, 从分支git clone源代码到本地。然后：
@@ -415,7 +415,9 @@ hexo d
 
 接下来就可以写文章了。
 
-# 操作
+# 基本操作
+
+
 
 ### new
 
