@@ -1,1 +1,0 @@
-# xqrshine.github.io
