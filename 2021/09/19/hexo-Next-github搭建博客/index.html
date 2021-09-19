@@ -28,15 +28,13 @@
 <meta property="og:description" content="个人博客是用Hexo微博框架+Next主题搭建的，然后把搭建的博客放在Github Pages上。现在把搭建的过程，遇到的问题，简单操作记录下来。 环境准备 Node.js Git  Hexo博客框架基于Node.js，下载Node.js, 更改安装目录，一路next至安装成功。 Git用于部署代码到github上，下载Git 安装Hexo 说明：在git bash中操作命令行。   本地创建bl">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919201210.png">
-<meta property="og:image" content="http://example.com/微信截图_20210919201210.png">
-<meta property="og:image" content="http://example.com/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919201210.png">
-<meta property="og:image" content="http://example.com/images/hexo-Next-github搭建博客/QQ图片20210919200358.png">
+<meta property="og:image" content="http://example.com/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210919200358.png">
 <meta property="og:image" content="http://example.com/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210919205138.png">
 <meta property="og:image" content="http://example.com/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919203650.png">
 <meta property="og:image" content="http://example.com/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919204219.png">
 <meta property="og:image" content="http://example.com/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919210812.png">
 <meta property="article:published_time" content="2021-09-19T11:30:23.000Z">
-<meta property="article:modified_time" content="2021-09-19T18:34:10.217Z">
+<meta property="article:modified_time" content="2021-09-19T18:37:15.105Z">
 <meta property="article:author" content="QiurongXu">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919201210.png">
@@ -280,13 +278,10 @@
 </ol>
 <img src="/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919201210.png" class="">
 
-<img src="../../../../微信截图_20210919201210.png" width=50% height=50%>
-<img src=<img src="/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210919201210.png" class=""> width="300" height="200">
-
 <ol start="5">
 <li>启动命令,登录localhost:4000，就可以看到生成的博客了。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g  &amp;&amp; hexo s</span><br></pre></td></tr></table></figure></li>
 </ol>
-<img src="/images/hexo-Next-github搭建博客/QQ图片20210919200358.png" width=80% height=80%>
+<img src="/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210919200358.png" class="">
 
 <h1 id="hexo部署到Github"><a href="#hexo部署到Github" class="headerlink" title="hexo部署到Github"></a>hexo部署到Github</h1><p>这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 _config.yml，翻到最后，修改为<br>YourgithubName就是你的GitHub账户：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
