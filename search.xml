@@ -50,7 +50,7 @@
 <ol start="5">
 <li>启动命令,登录localhost:4000，就可以看到生成的博客了。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g  &amp;&amp; hexo s</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><img src="/images/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210919200358.png" alt="Hexo博客"></p>
+<p><img src="QQ%E5%9B%BE%E7%89%8720210919200358.png" alt="Hexo博客"></p>
 <h1 id="hexo部署到Github"><a href="#hexo部署到Github" class="headerlink" title="hexo部署到Github"></a>hexo部署到Github</h1><p>这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 _config.yml，翻到最后，修改为<br>YourgithubName就是你的GitHub账户：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
@@ -65,7 +65,7 @@
 <li>hexo generate 顾名思义，生成静态文章，可以用 hexo g缩写</li>
 <li>hexo deploy 部署文章，可以用hexo d缩写</li>
 </ul>
-<p><img src="/images/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210919205138.png" alt="部署成功"></p>
+<p><img src="QQ%E5%9B%BE%E7%89%8720210919205138.png" alt="部署成功"></p>
 <p>部署过成功中如果是链接不到远程仓库，可能是因为没有SSH，生成SSH：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;   #一路回车</span><br></pre></td></tr></table></figure>
 
