@@ -105,3 +105,11 @@ deploy:
   type: git
   repository: git@github.com:xqrshine/xqrshine.github.io.git
   branch: master
+
+
+# Easy images  插入图片插件
+easy_images:
+  init: false # 默认 false；改为 true，将处理过去所有 post，通常装插件后第一次运行时使用。
+  cdn_prefix:  # 默认 null; 图片前缀，在生成 html 文件时为 image 添加前缀
+  max_width: 800 # 默认 null；设置图片最大宽度
+  max_height: 800 # 默认 null；设置图片最大高度
