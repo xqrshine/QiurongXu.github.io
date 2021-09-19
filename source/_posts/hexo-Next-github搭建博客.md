@@ -36,7 +36,7 @@ hexo init
 
 4. 基本配置。修改hexo/_config.yml中网站参数。
 
-![](../微信截图_20210919201210.png)
+![](/images/hexo-Next-github搭建博客/微信截图_20210919201210.png)
 
 
 5. 启动命令,登录localhost:4000，就可以看到生成的博客了。
