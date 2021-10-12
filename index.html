@@ -222,14 +222,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.1k</span>
+              <span>7.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>7 分钟</span>
             </span>
 
         </div>
@@ -241,7 +241,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h1><p>collections是Python内建的一个集合模块，提供了许多有用的集合类。</p>
+          <h1 id="collections-容器数据类型"><a href="#collections-容器数据类型" class="headerlink" title="collections - 容器数据类型"></a>collections - 容器数据类型</h1><p>collections是Python内建的一个集合模块，提供了许多有用的集合类。</p>
 <h2 id="namedtuple"><a href="#namedtuple" class="headerlink" title="namedtuple"></a>namedtuple</h2><p><code>namedtuple</code>是一个函数，用来创建一个自定义的<code>tuple</code>对象，并且规定了<code>tuple</code>对象属性的个数。<code>namedtuple</code>可以很方便地定义一种数据类型，它具有tuple的不变性，又可以根据属性来引用。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Point = namedtuple(<span class="string">&#x27;Point&#x27;</span>, [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p = Point(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.x</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.y</span><br><span class="line"><span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#验证创建的`Point`对象是`tuple`的一个子类</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">isinstance</span>(p, Point)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">isinstance</span>(p, <span class="built_in">tuple</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># namedtuple(&#x27;名称&#x27;, [属性list]) 创建具有三个属性的`tuple`对象</span></span><br><span class="line">Circle = namedtuple(<span class="string">&#x27;Circle&#x27;</span>, [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;r&#x27;</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -403,6 +403,253 @@
 <h2 id="OrderDict"><a href="#OrderDict" class="headerlink" title="OrderDict"></a>OrderDict</h2><p>使用<code>dict</code>时，Key是无序的。在对<code>dict</code>做迭代时，我们无法确定Key的顺序。如果要保持Key的顺序，可以用<code>OrderedDict</code>.注意，<code>OrderedDict</code>的Key会<strong>按照插入的顺序排列</strong>，不是Key本身排序：</p>
 <h2 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h2><p><code>Counter</code>是一个简单的计数器，例如，统计字符出现的个数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">c = Counter()</span><br><span class="line"><span class="keyword">for</span> ch <span class="keyword">in</span> <span class="string">&#x27;programming&#x27;</span>:</span><br><span class="line">    c[ch] = c[ch] + <span class="number">1</span></span><br><span class="line"><span class="comment"># Counter(&#123;&#x27;g&#x27;: 2, &#x27;m&#x27;: 2, &#x27;r&#x27;: 2, &#x27;a&#x27;: 1, &#x27;i&#x27;: 1, &#x27;o&#x27;: 1, &#x27;n&#x27;: 1, &#x27;p&#x27;: 1&#125;)</span></span><br><span class="line">c.update(<span class="string">&#x27;hello&#x27;</span>) <span class="comment"># 也可以一次性update</span></span><br><span class="line"><span class="comment"># Counter(&#123;&#x27;r&#x27;: 2, &#x27;o&#x27;: 2, &#x27;g&#x27;: 2, &#x27;m&#x27;: 2, &#x27;l&#x27;: 2, &#x27;p&#x27;: 1, &#x27;a&#x27;: 1, &#x27;i&#x27;: 1, &#x27;n&#x27;: 1, &#x27;h&#x27;: 1, &#x27;e&#x27;: 1&#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(Counter(<span class="string">&#x27;cbasbc&#x27;</span>))</span><br><span class="line"><span class="comment"># Counter(&#123;&#x27;c&#x27;: 2, &#x27;b&#x27;: 2, &#x27;a&#x27;: 1, &#x27;s&#x27;: 1&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="hashlib-安全哈希和消息摘要"><a href="#hashlib-安全哈希和消息摘要" class="headerlink" title="hashlib - 安全哈希和消息摘要"></a>hashlib - 安全哈希和消息摘要</h1><p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。摘要算法又称哈希算法、散列算法。它通过一个函数，<strong>把任意长度的数据转换为一个长度固定的数据串</strong>（通常用16进制的字符串表示）。</p>
+<p>摘要算法就是通过摘要函数<code>f()</code>对任意长度的数据<code>data</code>计算出固定长度的摘要<code>digest</code>，目的是为了发现原始数据是否被人篡改过。</p>
+<p>摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个<strong>单向函数</strong>，计算<code>f(data)</code>很容易，但通过<code>digest</code>反推<code>data</code>却非常困难。而且，对原始数据做一个<code>bit</code>的修改，都会导致计算出的摘要完全不同。</p>
+<p><strong>MD5</strong>是最常用的摘要算法，速度很快，生成结果是固定的128bit字节，通常用一个32位的16进制字符串表示。</p>
+<p>使用方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(<span class="string">&quot;how to use md5 in python hashlib?&quot;</span>.encode(<span class="string">&quot;utf-8&quot;</span>))  <span class="comment"># Unicode-objects must be encoded before hashing</span></span><br><span class="line"><span class="built_in">print</span>(md5.hexdigest())</span><br><span class="line"><span class="comment"># d26a53750bc40b38b65a520292f69306</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>SHA1</strong>的结果是160bit字节，通常用一个40位的16进制字符串表示。</p>
+<p>使用方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line">sha1 = hashlib.sha1()</span><br><span class="line">sha1.update(<span class="string">&#x27;how to use sha1 in &#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)) <span class="comment"># MD5和SHA1都可以分块调用 </span></span><br><span class="line">sha1.update(<span class="string">&#x27;python hashlib?&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)) </span><br><span class="line"><span class="built_in">print</span>(sha1.hexdigest())</span><br><span class="line"><span class="comment"># 2c76b57293ce30acef38d98f6046927161b46a44</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="math"><a href="#math" class="headerlink" title="math"></a>math</h1><p>数学方法：</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>math.degrees()</td>
+<td>Converts an angle(弧度) from radians to degrees</td>
+</tr>
+<tr>
+<td>math.cos()</td>
+<td>Returns the cosine of a number</td>
+</tr>
+<tr>
+<td>math.sin()</td>
+<td>Returns the sine of a number</td>
+</tr>
+<tr>
+<td>math.sinh()</td>
+<td>Returns the hyperbolic sine of a number</td>
+</tr>
+<tr>
+<td>math.tan()</td>
+<td>Returns the tangent of a number</td>
+</tr>
+<tr>
+<td>math.tanh()</td>
+<td>Returns the hyperbolic tangent of a number</td>
+</tr>
+<tr>
+<td>math.acos()</td>
+<td>Returns the arc cosine of a number</td>
+</tr>
+<tr>
+<td>math.asin()</td>
+<td>Returns the arc sine of a number</td>
+</tr>
+<tr>
+<td>math.atan()</td>
+<td>Returns the arc tangent of a number in radians</td>
+</tr>
+<tr>
+<td>math.fabs()</td>
+<td>Returns the absolute value of a number</td>
+</tr>
+<tr>
+<td>math.fmod(x, y)</td>
+<td>Returns the remainder of x/y</td>
+</tr>
+<tr>
+<td>math.frexp()</td>
+<td>Returns the mantissa and the exponent, of a specified number</td>
+</tr>
+<tr>
+<td>math.fsum()</td>
+<td>Returns the sum of all items in any iterable (tuples, arrays, lists, etc.)</td>
+</tr>
+<tr>
+<td>math.gamma()</td>
+<td>Returns the gamma function at x</td>
+</tr>
+<tr>
+<td>math.ceil()</td>
+<td>ounds a number up to the nearest integer</td>
+</tr>
+<tr>
+<td>math.floor()</td>
+<td>Rounds a number down to the nearest integer</td>
+</tr>
+<tr>
+<td>math.sqrt()</td>
+<td>Returns the square root of a number</td>
+</tr>
+<tr>
+<td>math.pow()</td>
+<td>Returns the value of x to the power of y</td>
+</tr>
+<tr>
+<td>math.gcd()</td>
+<td>Returns the greatest common divisor of two integers</td>
+</tr>
+<tr>
+<td>math.prod()</td>
+<td>Returns the product of all the elements in an iterable</td>
+</tr>
+<tr>
+<td>math.exp()</td>
+<td>Returns E raised to the power of x</td>
+</tr>
+<tr>
+<td>math.log()</td>
+<td>Returns the natural logarithm of a number, or the logarithm of number to base</td>
+</tr>
+<tr>
+<td>math.log1p()</td>
+<td>Returns the natural logarithm of 1+x</td>
+</tr>
+<tr>
+<td>math.log2()</td>
+<td>Returns the base-2 logarithm of x</td>
+</tr>
+<tr>
+<td>math.log10()</td>
+<td>Returns the base-10 logarithm of x</td>
+</tr>
+<tr>
+<td>math.isclose()</td>
+<td>Checks whether two values are close to each other, or not</td>
+</tr>
+<tr>
+<td>math.isfinite()</td>
+<td>Checks whether a number is finite or not</td>
+</tr>
+<tr>
+<td>math.isinf()</td>
+<td>Checks whether a number is infinite or not</td>
+</tr>
+<tr>
+<td>math.isnan()</td>
+<td>Checks whether a value is NaN (not a number) or</td>
+</tr>
+</tbody></table>
+<p>数学常量：</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>math.e</td>
+<td>Returns Euler’s number (2.7182…)</td>
+</tr>
+<tr>
+<td>math.inf</td>
+<td>Returns a floating-point positive infinity</td>
+</tr>
+<tr>
+<td>math.nan</td>
+<td>Returns a floating-point NaN (Not a Number) value</td>
+</tr>
+<tr>
+<td>math.pi</td>
+<td>Returns PI (3.1415…)</td>
+</tr>
+<tr>
+<td>math.tau</td>
+<td>Returns tau (6.2831…)</td>
+</tr>
+</tbody></table>
+<h1 id="random"><a href="#random" class="headerlink" title="random"></a>random</h1><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>seed()</td>
+<td>Initialize the random number generator</td>
+</tr>
+<tr>
+<td>sample(iteration， k)</td>
+<td>Returns a given sample of a sequence</td>
+</tr>
+<tr>
+<td>shuffle()</td>
+<td>Takes a sequence and returns the sequence in a random order（随机顺序排序）</td>
+</tr>
+<tr>
+<td>getstate()</td>
+<td>Returns the current internal state of the random number generator</td>
+</tr>
+<tr>
+<td>setstate()</td>
+<td>Restores the internal state of the random number generator</td>
+</tr>
+<tr>
+<td>randrange(x)</td>
+<td>Returns a random number between the given range</td>
+</tr>
+<tr>
+<td>randint(i，j)</td>
+<td>Returns a random number between the given range</td>
+</tr>
+<tr>
+<td>random()</td>
+<td>Returns a random float number between 0 and 1</td>
+</tr>
+<tr>
+<td>uniform()</td>
+<td>Returns a random float number between two given parameters(基于均匀分布的浮点数)</td>
+</tr>
+<tr>
+<td>expovariate()</td>
+<td>Returns a random float number based on the Exponential distribution (used in statistics) （指数分布）</td>
+</tr>
+<tr>
+<td>gammavariate()</td>
+<td>Returns a random float number based on the Gamma distribution (used in statistics) （gamma分布）</td>
+</tr>
+<tr>
+<td>gauss()</td>
+<td>Returns a random float number based on the Gaussian distribution (used in probability theories)（高斯分布）</td>
+</tr>
+<tr>
+<td>lognormvariate()</td>
+<td>Returns a random float number based on a log-normal distribution (used in probability theories) （对数正态分布）</td>
+</tr>
+<tr>
+<td>normalvariate()</td>
+<td>Returns a random float number based on the normal distribution (used in probability theories)（正态分布）</td>
+</tr>
+<tr>
+<td>vonmisesvariate()</td>
+<td>Returns a random float number based on the von Mises distribution (used in directional statistics)von Mises分布</td>
+</tr>
+<tr>
+<td>paretovariate()</td>
+<td>Returns a random float number based on the Pareto distribution (used in probability theories) 帕累托分布</td>
+</tr>
+<tr>
+<td>weibullvariate()</td>
+<td>Returns a random float number based on the Weibull distribution (used in statistics)Weibull分布</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment">#print a random number:</span></span><br><span class="line"><span class="built_in">print</span>(random.random())</span><br><span class="line"></span><br><span class="line"><span class="comment">#capture the state:</span></span><br><span class="line">state = random.getstate()</span><br><span class="line"></span><br><span class="line"><span class="comment">#print another random number:</span></span><br><span class="line"><span class="built_in">print</span>(random.random())</span><br><span class="line"></span><br><span class="line"><span class="comment">#restore the state:</span></span><br><span class="line">random.setstate(state)</span><br><span class="line"></span><br><span class="line"><span class="comment">#and the next random number should be the same as when you captured the state:</span></span><br><span class="line"><span class="built_in">print</span>(random.random())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0.5723668016858915</span><br><span class="line">0.88231723987879</span><br><span class="line">0.88231723987879</span><br></pre></td></tr></table></figure>
+
 
 
       
@@ -886,12 +1133,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">11k</span>
+    <span title="站点总字数">15k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">10 分钟</span>
+    <span title="站点阅读时长">13 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
