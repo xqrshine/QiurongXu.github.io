@@ -636,4 +636,18 @@
         <tag>Python</tag>
       </tags>
   </entry>
+  <entry>
+    <title>python创建虚拟环境及jupyter启动</title>
+    <url>/2021/10/12/python%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8F%8Ajupyter%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>python创建虚拟环境<code>python3 -m venv path/虚拟环境名称</code></p>
+<p>安装jupyter<code>pip install jupyter notebook</code></p>
+<p>虚拟环境添加到jupyter的kernel<code>python -m ipykernel install --user --name 虚拟环境名称 --display-name “虚拟环境名称”</code></p>
+<p>启动jupyter<code>jupyter notebook</code>、<code>nohup jupyter notebook &amp;</code>（后台运行，即使关闭浏览器或者断网都不影响程序的运行）。</p>
+<p>查找jupyter进程<code>ps -aux |grep jupyter</code></p>
+<p>关闭后台jupyter进程<code>kill -9 PID</code></p>
+]]></content>
+      <tags>
+        <tag>tools</tag>
+      </tags>
+  </entry>
 </search>
