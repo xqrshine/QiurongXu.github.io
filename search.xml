@@ -467,6 +467,10 @@
 <td>Rounds a number down to the nearest integer</td>
 </tr>
 <tr>
+<td>math.trunc()</td>
+<td>returns the truncated integer part of a number</td>
+</tr>
+<tr>
 <td>math.sqrt()</td>
 <td>Returns the square root of a number</td>
 </tr>
