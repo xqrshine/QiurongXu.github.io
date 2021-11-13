@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="本讲的关键内容包括NLP的介绍、Word Vectors词向量、SVD、Skip-gram、CBOW、Negative sampling负采样、Hierarchical Softmax分层softmax、Word2Vec. 传统表示 one hot 词袋 基于窗口的共现矩阵  基于迭代的Word2Vec分布式表示：用单词的上下文表示单词, 即word vectors,有时word vectors也">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/09/20/hello-world/index.html">
+<meta property="og:title" content="css224 1-Introduction and Word Vectors">
+<meta property="og:url" content="http://example.com/2021/10/15/css224-1-Introduction-and-Word-Vectors/index.html">
 <meta property="og:site_name" content="阿荣的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="本讲的关键内容包括NLP的介绍、Word Vectors词向量、SVD、Skip-gram、CBOW、Negative sampling负采样、Hierarchical Softmax分层softmax、Word2Vec. 传统表示 one hot 词袋 基于窗口的共现矩阵  基于迭代的Word2Vec分布式表示：用单词的上下文表示单词, 即word vectors,有时word vectors也">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-19T17:58:26.376Z">
-<meta property="article:modified_time" content="2021-09-19T02:16:56.523Z">
+<meta property="article:published_time" content="2021-10-15T13:15:26.000Z">
+<meta property="article:modified_time" content="2021-10-16T02:22:20.602Z">
 <meta property="article:author" content="QiurongXu">
+<meta property="article:tag" content="css224">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/09/20/hello-world/">
+<link rel="canonical" href="http://example.com/2021/10/15/css224-1-Introduction-and-Word-Vectors/">
 
 
 <script id="page-configurations">
@@ -45,7 +46,7 @@
   };
 </script>
 
-  <title>Hello World | 阿荣的博客</title>
+  <title>css224 1-Introduction and Word Vectors | 阿荣的博客</title>
   
 
 
@@ -194,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/15/css224-1-Introduction-and-Word-Vectors/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -207,7 +208,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          css224 1-Introduction and Word Vectors
         </h1>
 
         <div class="post-meta">
@@ -217,7 +218,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-20 01:58:26" itemprop="dateCreated datePublished" datetime="2021-09-20T01:58:26+08:00">2021-09-20</time>
+              <time title="创建时间：2021-10-15 21:15:26" itemprop="dateCreated datePublished" datetime="2021-10-15T21:15:26+08:00">2021-10-15</time>
             </span>
 
           <br>
@@ -226,14 +227,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>367</span>
+              <span>2.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -245,19 +246,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <p>本讲的关键内容包括NLP的介绍、Word Vectors词向量、SVD、Skip-gram、CBOW、Negative sampling负采样、Hierarchical Softmax分层softmax、Word2Vec.</p>
+<h1 id="传统表示"><a href="#传统表示" class="headerlink" title="传统表示"></a>传统表示</h1><ul>
+<li>one hot</li>
+<li>词袋</li>
+<li>基于窗口的共现矩阵</li>
+</ul>
+<h1 id="基于迭代的Word2Vec"><a href="#基于迭代的Word2Vec" class="headerlink" title="基于迭代的Word2Vec"></a>基于迭代的Word2Vec</h1><p><strong>分布式表示</strong>：用单词的上下文表示单词, 即<code>word vectors</code>,有时<code>word vectors</code>也称为<code>word embedding</code> 或 <code>word representations</code>,他们是一个分布式表示.</p>
+<p>Word2Vec 包括：<br>    - <strong>两种算法：</strong> CBOW和Skip-gram. CBOW的目标是从周围上下文预测中心单词的词向量。Skip-gram是由中心单词预测周围单词的分布（概率）。<br>    - <strong>两种训练方法：</strong> 负采样和分层softmax. 负采样通过负样本进行采样来定义目标.分层softmax使用有效的树结构来计算词汇次表的概率来定义目标.</p>
+<p>idea:<br>    - 有一个大的文本语料库.<br>    - 固定词汇表中的每个单词都由一个向量表示.<br>    - 浏览文本中的每个位置t，有一个中心词c和上下文（“外部”）词o.<br>    - 使用c和o的词向量的相似性来计算给定c的概率o（或反之亦然）.<br>    - 不断调整词向量以最大化该概率.</p>
+<h2 id="语言模型（Unigrams-Bigrams-etc-）"><a href="#语言模型（Unigrams-Bigrams-etc-）" class="headerlink" title="语言模型（Unigrams, Bigrams, etc.）"></a>语言模型（Unigrams, Bigrams, etc.）</h2><p>首先，我们需要创建一个为一个序列中tokens赋予概率的模型。如：</p>
+<center>"The cat jumped over the puddle."</center>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>一个好的语言模型会给这个句子很大的概率，因为这是一个在句法和语义是哪个都完全有效的句子。类似地，”stock boil fish is toy”应该有一个很小的概率，因为这是一个无意义的句子。从数学上讲，我们可以将这个概率称为任意给定的n个单词序列：</p>
+<p>$$P(w_1,w_2,…,w_n)$$</p>
+<p>我们可以采用一元语言模型方法，假设单词出现完全独立来分解这个概率：</p>
+<p>$$P(w_1,w_2,…,w_n)=\prod_{i=1}^{n} {P(w_i)}$$</p>
+<p>但是我们知道下一个单词在很大程度上取决于前一个单词序列。我们让序列的概率取决于序列中一个单词和它旁边的单词的成对概率。我们称之为二元模型，并将其表示为：</p>
+<p>$$P(w_1,w_2,…,w_n)=\prod_{i=1}^{n} {P(w_i)|P(w_{i-1})}$$</p>
+<p>同样，这当然有点天真，因为我们只关注相邻的单词对，而不是评估整个句子。但正如我们将看到的，这种表达方式让我们走得相当远。注意，在字词矩阵的大小为1的上下文中，我们基本上可以学习这些成对概率。但同样，这需要计算和存储有关大规模数据集的全局信息。现在，我们已经了解了如何考虑具有概率的tokens序列，让我们观察一些可以了解这些概率的示例模型</p>
+<h2 id="CBOW"><a href="#CBOW" class="headerlink" title="CBOW"></a>CBOW</h2><p>首先，我们设置已知参数,由一个one hot 向量表示句子。输入的one hot 向量和上下文我们将用$x^{(c)}$ 表示，输出用$y^{(c)}$ 表示，因为在CBOW中我们只有一个输出向量，因此我们称之为$y$，它是已知中心单词的一个ont hot 向量。</p>
+<p>现在定义模型中的未知数.创建两个矩阵，$V\in R^{n\times |V|}$ 和 $U\in R^{|V|\times n}$. </p>
+<p>$n$ :任意大小的嵌入向量空间.<br>$V$ :输入单词矩阵，它的第i列是单词$w_i$的n维词向量.<br>$v_i$ :$n\times 1$ 的向量, $V$的第i列.<br>$U$ :输出单词矩阵，它的第i行是单词$w_i$的n维词向量.<br>$u_j$ :$U$的第i行.</p>
+<p>事实上，我们确实为每个单词学习了两个向量（即输入字向量 $v_i$和输出字向量$u_i$.</p>
+<p>模型工作流程：</p>
+<ol>
+<li>We generate our <strong>one hot word vectors</strong> for the input context of size$m:(x^{c-m},\dots ,x^{c-1}, x^{c+1},\dots, x^{c+m}\in R^{|V|})))$.</li>
+<li>We get our embedded word vectors for the context $(v_{c-m} = Vx^{(c-m)}, v_{c-m+1} = Vx^{(c-m+1)}, . . ., v_{c+m} = Vx^{(c+m)} \in R^n)<br>$。</li>
+<li>Average these vectors to get$\hat v = \frac{v_{c-m} + v_{c-m+1} + \dots + v_{c+m}}{2m} \in R^n$.</li>
+<li>Generate a score vector$z = U\hat v \in R^{|V|}$。As the dot product of similar vectors is higher, it will push similar words close to each other in order to achieve a high score.</li>
+<li>Turn the scores into probabilities$\hat y = softmax(z)\in R^{|V|}$。</li>
+<li>We desire our probabilities generated, $\hat y = R^{|V|}<br>$, to match the true probabilities, $y = R^{|V|}$, which also happens to be the one hot vector of the actual word。</li>
+</ol>
 
     </div>
 
@@ -266,6 +286,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/css224/" rel="tag"># css224</a>
+          </div>
 
         
 
@@ -273,13 +296,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/09/19/hexo-Next-github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" rel="prev" title="hexo+Next+github搭建博客">
-      <i class="fa fa-chevron-left"></i> hexo+Next+github搭建博客
+    <a href="/2021/10/12/python%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8F%8Ajupyter%E5%90%AF%E5%8A%A8/" rel="prev" title="python创建虚拟环境及jupyter启动">
+      <i class="fa fa-chevron-left"></i> python创建虚拟环境及jupyter启动
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/09/29/python%E5%B8%B8%E7%94%A8%E5%86%85%E5%BB%BA%E6%A8%A1%E5%9D%97/" rel="next" title="python常用内建模块">
-      python常用内建模块 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -338,7 +358,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.</span> <span class="nav-text">传统表示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E8%BF%AD%E4%BB%A3%E7%9A%84Word2Vec"><span class="nav-number">2.</span> <span class="nav-text">基于迭代的Word2Vec</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%EF%BC%88Unigrams-Bigrams-etc-%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">语言模型（Unigrams, Bigrams, etc.）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CBOW"><span class="nav-number">2.2.</span> <span class="nav-text">CBOW</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

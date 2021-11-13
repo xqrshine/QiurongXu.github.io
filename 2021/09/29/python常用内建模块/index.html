@@ -28,7 +28,7 @@
 <meta property="og:description" content="collections - 容器数据类型collections是Python内建的一个集合模块，提供了许多有用的集合类。 namedtuplenamedtuple是一个函数，用来创建一个自定义的tuple对象，并且规定了tuple对象属性的个数。namedtuple可以很方便地定义一种数据类型，它具有tuple的不变性，又可以根据属性来引用。 1234567891011121314151617&amp;g">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-29T14:09:24.000Z">
-<meta property="article:modified_time" content="2021-10-12T15:23:49.822Z">
+<meta property="article:modified_time" content="2021-11-13T10:21:16.751Z">
 <meta property="article:author" content="QiurongXu">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -227,14 +227,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>7.4k</span>
+              <span>8.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+              <span>8 分钟</span>
             </span>
 
         </div>
@@ -660,7 +660,116 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0.5723668016858915</span><br><span class="line">0.88231723987879</span><br><span class="line">0.88231723987879</span><br></pre></td></tr></table></figure>
 
 
-<h1 id="os"><a href="#os" class="headerlink" title="os"></a>os</h1><h1 id="re"><a href="#re" class="headerlink" title="re"></a>re</h1><h1 id="shutil"><a href="#shutil" class="headerlink" title="shutil"></a>shutil</h1><h1 id="sys"><a href="#sys" class="headerlink" title="sys"></a>sys</h1><h1 id="tarfile"><a href="#tarfile" class="headerlink" title="tarfile"></a>tarfile</h1><h1 id="time"><a href="#time" class="headerlink" title="time"></a>time</h1><h1 id="zipfile"><a href="#zipfile" class="headerlink" title="zipfile"></a>zipfile</h1><h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><h1 id="IPython"><a href="#IPython" class="headerlink" title="IPython"></a>IPython</h1><h1 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h1><h1 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h1><h1 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h1><h1 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h1><h1 id="torch"><a href="#torch" class="headerlink" title="torch"></a>torch</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">from torch import nn</span><br><span class="line">from torch.nn import function as F</span><br><span class="line">from torch.utils import data</span><br></pre></td></tr></table></figure>
+<h1 id="os"><a href="#os" class="headerlink" title="os"></a>os</h1><h1 id="re"><a href="#re" class="headerlink" title="re"></a>re</h1><h1 id="shutil"><a href="#shutil" class="headerlink" title="shutil"></a>shutil</h1><h1 id="sys"><a href="#sys" class="headerlink" title="sys"></a>sys</h1><h1 id="tarfile"><a href="#tarfile" class="headerlink" title="tarfile"></a>tarfile</h1><p>作用：用来读写tar归档。包括使用gzip, bz2 和 lzma压缩的归档。</p>
+<ol>
+<li>tarfile.open(name=None, mode=’r’, fileobj=None, bufsize=10240, **kwargs)</li>
+</ol>
+<p>打开一个TarFile类型的文件对象。</p>
+<ul>
+<li><code>name</code> 文件名或路径.</li>
+<li><code>bufsize</code> 指定数据块的大小，默认为20*512字节.</li>
+<li><code>mode</code> 打开模式.(读r, 写w, 打包x)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘r’ or ‘r:*’</td>
+<td>自动解压并打开文件（推荐模式）</td>
+</tr>
+<tr>
+<td>‘r:’</td>
+<td>只打开文件不解压</td>
+</tr>
+<tr>
+<td>‘r:gz’</td>
+<td>采用gzip格式解压并打开文件</td>
+</tr>
+<tr>
+<td>‘r:bz2’</td>
+<td>采用bz2格式解压并打开文件</td>
+</tr>
+<tr>
+<td>‘r:xz’</td>
+<td>采用lzma格式解压并打开文件</td>
+</tr>
+<tr>
+<td>‘x’ or ‘x:’</td>
+<td>仅创建打包文件，不压缩</td>
+</tr>
+<tr>
+<td>‘x:gz’</td>
+<td>采用gzip方式压缩并打包文件</td>
+</tr>
+<tr>
+<td>‘x:bz2’</td>
+<td>采用bzip2方式压缩并打包文件</td>
+</tr>
+<tr>
+<td>‘x:xz’</td>
+<td>采用lzma方式压缩并打包文件</td>
+</tr>
+<tr>
+<td>‘a’ or ‘a:’</td>
+<td>打开文件，并以不压缩的方式追加内容。如果文件不存在，则创建</td>
+</tr>
+<tr>
+<td>‘w’ or ‘w:’</td>
+<td>以不压缩的方式写入</td>
+</tr>
+<tr>
+<td>‘w:gz’</td>
+<td>以gzip的方式压缩并写入</td>
+</tr>
+<tr>
+<td>‘w:bz2’</td>
+<td>以bzip2的方式压缩并写入</td>
+</tr>
+<tr>
+<td>‘w:xz’</td>
+<td>以lzma的方式压缩并写入</td>
+</tr>
+</tbody></table>
+<p>如果当前的模式不能正常打开文件用于读取，将抛出<code>ReadError</code>异常，这种情况下，使用<code>&quot;r&quot;</code>模式。如果指定的压缩方式不支持，将抛出<code>CompressionError</code>异常。</p>
+<p>对于 <code>&#39;w:gz&#39;, &#39;r:gz&#39;, &#39;w:bz2&#39;, &#39;r:bz2&#39;, &#39;x:gz&#39;, &#39;x:bz2&#39;</code> 等模式，tarfile.open() 接受关键字参数 <code>compresslevel (默认值为 9)</code> 来指定文件的压缩等级。</p>
+<ol start="2">
+<li>TarFile.add(name) </li>
+</ol>
+<p>将指定文件加入包内.</p>
+<ol start="3">
+<li>TarFile.close()</li>
+</ol>
+<p>关闭TarFile文件，在<code>w</code>模式下，会在文件末尾添加量个zero块.</p>
+<ol start="4">
+<li>TarFile.getmembers()</li>
+</ol>
+<p>获取包内所有成员的信息.</p>
+<ol start="5">
+<li>TarFile.getmember()</li>
+</ol>
+<p>获取包内某个成员的信息.</p>
+<ol start="6">
+<li>TarFile.getnames()</li>
+</ol>
+<p>获取包内所有成员的名字.</p>
+<ol start="7">
+<li>TarFile.list() </li>
+</ol>
+<p>列表显示包内成员的信息.</p>
+<h1 id="time"><a href="#time" class="headerlink" title="time"></a>time</h1><h1 id="zipfile"><a href="#zipfile" class="headerlink" title="zipfile"></a>zipfile</h1><p>ZIP是通用的归档和压缩格式。zipfile模块提供了通用的创建、读取、写入、附加和显示压缩文件的方法。</p>
+<ol>
+<li>zipfile.ZipFile(name, mode)</li>
+</ol>
+<p>模块最重要的类，用于读写ZIP文件.</p>
+<ol start="2">
+<li>ZipFile.write(filepath)</li>
+</ol>
+<p>将文件写入压缩文件. <code>z.write(r&quot;d:\test\1.txt&quot;) # 注意路径的写法</code></p>
+<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><h1 id="IPython"><a href="#IPython" class="headerlink" title="IPython"></a>IPython</h1><h1 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h1><h1 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h1><h1 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h1><h1 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h1><h1 id="torch"><a href="#torch" class="headerlink" title="torch"></a>torch</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">from torch import nn</span><br><span class="line">from torch.nn import function as F</span><br><span class="line">from torch.utils import data</span><br></pre></td></tr></table></figure>
 <h1 id="torchvison"><a href="#torchvison" class="headerlink" title="torchvison"></a>torchvison</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import torchvision</span><br><span class="line">from torchvision import transforms</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -761,14 +870,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -812,12 +921,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">15k</span>
+    <span title="站点总字数">19k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14 分钟</span>
+    <span title="站点阅读时长">17 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
